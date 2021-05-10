@@ -21,7 +21,7 @@ namespace B_Dorina_2020_majus
             //Példányosítjuk
             Adat[] adatok = new Adat[500];
             //Beolvasás
-            StreamReader olvas = new StreamReader(@"C:\Users\Rendszergazda\Desktop\K_eszter_prog_erettsegi\2020-majus\tavirathu13.txt");
+            StreamReader olvas = new StreamReader(@"C:\Users\Rendszergazda\Downloads\tavirathu13.txt");
             int n = 0;
             while (!olvas.EndOfStream)
             {
@@ -50,6 +50,41 @@ namespace B_Dorina_2020_majus
             }
             Console.WriteLine("Az utolsó mérési adat a megadott településről " + adatok[index].ido.Substring(0,2) + ":" + adatok[index].ido.Substring(2,2) + "-kor érkezett.");
 
+            //3.feladat
+            int max = int.MinValue;
+            int index1 = -1;
+            for (int i = 0;i<n;i++)
+            {
+                if (max < adatok[i].homerseklet)
+                {
+                    max = adatok[i].homerseklet;
+                    index1 = i;
+                }
+            }
+
+            int min = int.MaxValue;
+            int index2 = -1;
+            for (int i = 0; i < n; i++)
+            {
+                if (min > adatok[i].homerseklet)
+                {
+                    min = adatok[i].homerseklet;
+                    index2 = i;
+                }
+            }
+            Console.WriteLine("3.feladat");
+            Console.WriteLine($"A legalacsonyabb hőmérséklet: {adatok[index2].telepules} {adatok[index2].ido.Substring(0, 2)}:{adatok[index2].ido.Substring(2, 2)} {min} fok.");
+            Console.WriteLine($"A legmagasabb hőmérséklet: {adatok[index1].telepules} {adatok[index1].ido.Substring(0, 2)}:{adatok[index1].ido.Substring(2, 2)} {max} fok.");
+
+            //4.feladat
+            Console.WriteLine("4.feladat");
+            for (int i = 0;i<n;i++)
+            {
+                if(adatok[i].szelirany == "00000")
+                {
+                    Console.WriteLine($"{adatok[i].telepules} {adatok[i].ido.Substring(0, 2)}:{adatok[i].ido.Substring(2, 2)}");
+                }
+            }
             Console.ReadKey();
         }
     }
